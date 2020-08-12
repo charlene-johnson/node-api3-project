@@ -7,7 +7,7 @@ const router = express.Router();
 
 
 // Seems to be adding users but for some reason isn't giving me a green status
-router.post('/', validateUser(), (req, res) => {
+router.post('/', validateUser(), (req, res, next) => {
   // do your magic!
   users.insert(req.body)
   .then((user) => {
@@ -17,7 +17,7 @@ router.post('/', validateUser(), (req, res) => {
 });
 
 // adding user post isn't working either
-router.post('/:id/posts', validatePost(), (req, res) => {
+router.post('/:id/posts', validatePost(), (req, res, next) => {
   users.insert({...req.body, user_id: req.params.id})
   .then((post) => {
     if (post.text) {
