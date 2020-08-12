@@ -18,7 +18,7 @@ router.post('/', validateUser(), (req, res, next) => {
 
 // adding user post isn't working either
 router.post('/:id/posts',validatePost(),  (req, res, next) => {
-  users.insert({...req.body, user_id: req.params.id})
+  users.insertPost({...req.body, user_id: req.params.id})
   .then((post) => {
     res.status(201).json(post)
   })
