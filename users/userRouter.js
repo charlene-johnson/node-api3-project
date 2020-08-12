@@ -17,16 +17,10 @@ router.post('/', validateUser(), (req, res, next) => {
 });
 
 // adding user post isn't working either
-router.post('/:id/posts', validatePost(), (req, res, next) => {
+router.post('/:id/posts',validatePost(),  (req, res, next) => {
   users.insert({...req.body, user_id: req.params.id})
   .then((post) => {
-    if (post.text) {
     res.status(201).json(post)
-    } else {
-      res.status(500).json({
-        message: "There was an error saving the post to the database"
-      })
-    }
   })
   .catch(error => {
     next(error)

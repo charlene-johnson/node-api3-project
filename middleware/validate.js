@@ -48,8 +48,6 @@ function validatePost() {
         }
     }
 
-
-
 module.exports = {
     validateUserId,
     validateUser,
